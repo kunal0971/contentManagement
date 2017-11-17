@@ -34,9 +34,9 @@ if (isset($_POST['submit'])) {
                     exit();
                 } else {
                     // hashing the password
-                    $hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
+                    #$hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
                     // insert the user into the database
-                    $sql = "INSERT INTO users (first, last, uname, email, pwd) VALUES ('$first', '$last', '$uid', '$email', '$hashedPwd');";
+                    $sql = "INSERT INTO users (first, last, uname, email, pwd) VALUES ('$first', '$last', '$uid', '$email', '$pwd');";
                     mysqli_query($conn, $sql);
                     header("Location: ../signup.php?signup=success");
                     exit();

@@ -24,11 +24,12 @@ if (isset($_POST['submit'])) {
         } else {
             if ($row = mysqli_fetch_assoc($result)) {
                 // de-hashing the password
-                $hashedPwdCheck = password_verify($pwd, $row['pwd']);
-                if ($hashedPwdCheck == false) {
+                #$hashedPwdCheck = password_verify($pwd, $row['pwd']);
+                $hashedPwdCheck = $row['pwd'];
+                if ($hashedPwdCheck != $pwd) {
                     header("Location: ../index.php?login=error");
                     exit();
-                } elseif ($hashedPwdCheck == true) {
+                } elseif ($hashedPwdCheck == $pwd) {
                     // log in the user here
                     $_SESSION['u_id'] = $row['id'];
                     $_SESSION['u_first'] = $row['first'];
